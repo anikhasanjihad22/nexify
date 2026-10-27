@@ -5,7 +5,7 @@ package com.webtoapp.util
  * One path segment. Empty and illegal names fall back to [DEFAULT].
  */
 object AlbumFolderName {
-    const val DEFAULT = "WebToApp"
+    const val DEFAULT = "Nexify"
 
     fun sanitize(raw: String?): String {
         val cleaned = raw.orEmpty()

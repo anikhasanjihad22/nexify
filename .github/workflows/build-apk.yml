@@ -54,8 +54,7 @@ jobs:
 
       - name: Show first errors
         if: failure()
-        run: |
-          grep -nE "^e: |error:|What went wrong|FAILED" -A6 build.log | head -120
+        run: grep -nE "^e: |error:|What went wrong|FAILED" -A6 build.log | head -120
 
       - name: Collect APKs
         run: |

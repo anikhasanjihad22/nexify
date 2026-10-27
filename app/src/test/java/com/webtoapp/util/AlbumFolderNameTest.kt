@@ -5,10 +5,10 @@ import org.junit.Test
 
 class AlbumFolderNameTest {
     @Test
-    fun `blank and illegal names fall back to WebToApp`() {
-        assertThat(AlbumFolderName.sanitize(null)).isEqualTo("WebToApp")
-        assertThat(AlbumFolderName.sanitize("  ")).isEqualTo("WebToApp")
-        assertThat(AlbumFolderName.sanitize("../")).isEqualTo("WebToApp")
+    fun `blank and illegal names fall back to Nexify`() {
+        assertThat(AlbumFolderName.sanitize(null)).isEqualTo("Nexify")
+        assertThat(AlbumFolderName.sanitize("  ")).isEqualTo("Nexify")
+        assertThat(AlbumFolderName.sanitize("../")).isEqualTo("Nexify")
         assertThat(AlbumFolderName.sanitize("a/b")).isEqualTo("ab")
     }
 

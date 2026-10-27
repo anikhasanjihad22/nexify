@@ -3415,6 +3415,22 @@ fun ErrorPageConfigCard(
     }
 }
 
+@Composable
+fun ScreenProtectionCard(
+    config: WebViewConfig,
+    onConfigChange: (WebViewConfig) -> Unit
+) {
+    WtaSettingCard {
+        WtaToggleRow(
+            title = Strings.secureScreenTitle,
+            subtitle = Strings.secureScreenDesc.ifDescriptionsShown(),
+            icon = Icons.Outlined.Lock,
+            checked = config.secureScreen,
+            onCheckedChange = { onConfigChange(config.copy(secureScreen = it)) }
+        )
+    }
+}
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SpecialSettingsCard(
@@ -3555,14 +3571,6 @@ fun SpecialSettingsCard(
                                 icon = Icons.Outlined.Shield,
                                 checked = config.antiCapture,
                                 onCheckedChange = { onConfigChange(config.copy(antiCapture = it)) }
-                            )
-                            WtaSectionDivider()
-                            WtaToggleRow(
-                                title = Strings.secureScreenTitle,
-                                subtitle = Strings.secureScreenDesc.ifDescriptionsShown(),
-                                icon = Icons.Outlined.Lock,
-                                checked = config.secureScreen,
-                                onCheckedChange = { onConfigChange(config.copy(secureScreen = it)) }
                             )
                         }
                     }
@@ -4122,7 +4130,7 @@ fun SpecialSettingsCard(
                                     modifier = Modifier.fillMaxWidth(),
                                     singleLine = true,
                                     label = { Text(Strings.mediaAlbumNameLabel) },
-                                    placeholder = { Text("WebToApp") },
+                                    placeholder = { Text("Nexify") },
                                     supportingText = if (LocalShowDescriptions.current) {
                                         { Text(Strings.mediaAlbumNameHint) }
                                     } else {

@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -29,10 +30,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.webtoapp.WebToAppApplication
 import com.webtoapp.core.agent.mcp.HostMcpController
 import com.webtoapp.core.agent.permission.ChoiceRequest
 import com.webtoapp.core.agent.permission.PermissionRequest
+import com.webtoapp.core.host.HostRuntimePrefs
 import com.webtoapp.core.i18n.LanguageManager
 import com.webtoapp.core.i18n.Strings
 import com.webtoapp.core.logging.AppLogger
@@ -138,6 +143,18 @@ class MainActivity : ComponentActivity() {
         requestNecessaryPermissions()
 
         checkShortcutPermission()
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                HostRuntimePrefs.getInstance(this@MainActivity).secureScreenFlow.collect { secure ->
+                    if (secure) {
+                        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                    } else {
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                    }
+                }
+            }
+        }
 
         try {
             WindowCompat.setDecorFitsSystemWindows(window, false)

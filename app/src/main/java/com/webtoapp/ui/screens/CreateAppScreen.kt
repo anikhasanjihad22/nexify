@@ -508,6 +508,13 @@ fun CreateAppScreen(
             }
 
             item {
+                ScreenProtectionCard(
+                    config = editState.webViewConfig,
+                    onConfigChange = { viewModel.updateEditState { copy(webViewConfig = it) } }
+                )
+            }
+
+            item {
                 SpecialSettingsCard(
                     config = editState.webViewConfig,
                     onConfigChange = { viewModel.updateEditState { copy(webViewConfig = it) } },

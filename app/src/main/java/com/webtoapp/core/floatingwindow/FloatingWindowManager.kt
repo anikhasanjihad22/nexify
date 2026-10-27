@@ -410,7 +410,7 @@ class FloatingWindowManager(private val context: Context) {
         titleBar.addView(dragIndicator)
 
         val titleText = TextView(context).apply {
-            text = appName.ifBlank { "WebToApp" }
+            text = appName.ifBlank { "Nexify" }
             setTextColor(0xFFD0D0E0.toInt())
             textSize = 13f
             setSingleLine(true)

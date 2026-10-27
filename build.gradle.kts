@@ -40,7 +40,7 @@ fun resolvePython3Command(): List<String> {
 
 tasks.register<Exec>("checkUiDesignSystem") {
     group = "verification"
-    description = "Checks Compose UI files against the WebToApp design-system debt baseline."
+    description = "Checks Compose UI files against the Nexify design-system debt baseline."
     workingDir = rootDir
     commandLine(
         resolvePython3Command() + listOf(

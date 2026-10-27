@@ -50,7 +50,7 @@ fun buildShellErrorReport(
     throwable: Throwable?
 ): String {
     val sb = StringBuilder()
-    sb.appendLine("===== WebToApp Error Report =====")
+    sb.appendLine("===== Nexify Error Report =====")
     sb.appendLine("app: ${config.appName}")
     sb.appendLine("package: ${config.packageName}")
     sb.appendLine("version: ${config.versionName} (${config.versionCode})")
@@ -76,7 +76,7 @@ fun buildShellErrorReport(
 
 private fun copyErrorReport(context: Context, report: String) {
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager ?: return
-    clipboard.setPrimaryClip(ClipData.newPlainText("WebToApp Error", report))
+    clipboard.setPrimaryClip(ClipData.newPlainText("Nexify Error", report))
     Toast.makeText(context, Strings.errorCopied, Toast.LENGTH_SHORT).show()
 }
 

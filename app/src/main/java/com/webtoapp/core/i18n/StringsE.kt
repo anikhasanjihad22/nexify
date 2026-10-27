@@ -3598,16 +3598,16 @@ object StringsE {
         AppLanguage.KOREAN -> "갤러리 폴더"
     }
     val mediaAlbumNameHint: String get() = when (Strings.lang) {
-        AppLanguage.CHINESE -> "系统下载进相册时用的子目录名。留空则是 WebToApp。自定义文件夹里的图片、视频和音频会单独登记进相册。"
-        AppLanguage.ENGLISH -> "Subfolder used when a system download is saved to the gallery. Blank stays WebToApp. Pictures, video, and audio saved to a custom folder are registered with the gallery too."
-        AppLanguage.ARABIC -> "المجلد الفرعي المستخدم عند حفظ تنزيل النظام في المعرض. الفراغ يبقى WebToApp. الصور والفيديو والصوت في مجلد مخصص تُسجَّل أيضًا في المعرض."
-        AppLanguage.PORTUGUESE -> "Subpasta usada quando um download do sistema vai para a galeria. Em branco continua WebToApp. Imagens, vídeo e áudio numa pasta personalizada também entram na galeria."
-        AppLanguage.SPANISH -> "Subcarpeta usada cuando una descarga del sistema va a la galería. En blanco sigue siendo WebToApp. Las imágenes, el vídeo y el audio de una carpeta personalizada también se registran en la galería."
-        AppLanguage.FRENCH -> "Sous-dossier utilisé quand un téléchargement système va dans la galerie. Vide reste WebToApp. Les images, vidéos et sons d'un dossier personnalisé sont aussi inscrits dans la galerie."
-        AppLanguage.GERMAN -> "Unterordner, wenn ein Systemdownload in der Galerie landet. Leer bleibt WebToApp. Bilder, Videos und Audio in einem eigenen Ordner werden ebenfalls in der Galerie eingetragen."
-        AppLanguage.RUSSIAN -> "Подпапка, когда системная загрузка попадает в галерею. Пустое значение — WebToApp. Картинки, видео и аудио из своей папки тоже регистрируются в галерее."
-        AppLanguage.JAPANESE -> "システムのダウンロードをギャラリーに入れるときのサブフォルダです。空欄は WebToApp です。カスタムフォルダの画像、動画、音声もギャラリーに登録します。"
-        AppLanguage.KOREAN -> "시스템 다운로드를 갤러리에 넣을 때 쓰는 하위 폴더입니다. 비우면 WebToApp 입니다. 사용자 폴더의 사진, 동영상, 오디오도 갤러리에 등록합니다."
+        AppLanguage.CHINESE -> "系统下载进相册时用的子目录名。留空则是 Nexify。自定义文件夹里的图片、视频和音频会单独登记进相册。"
+        AppLanguage.ENGLISH -> "Subfolder used when a system download is saved to the gallery. Blank stays Nexify. Pictures, video, and audio saved to a custom folder are registered with the gallery too."
+        AppLanguage.ARABIC -> "المجلد الفرعي المستخدم عند حفظ تنزيل النظام في المعرض. الفراغ يبقى Nexify. الصور والفيديو والصوت في مجلد مخصص تُسجَّل أيضًا في المعرض."
+        AppLanguage.PORTUGUESE -> "Subpasta usada quando um download do sistema vai para a galeria. Em branco continua Nexify. Imagens, vídeo e áudio numa pasta personalizada também entram na galeria."
+        AppLanguage.SPANISH -> "Subcarpeta usada cuando una descarga del sistema va a la galería. En blanco sigue siendo Nexify. Las imágenes, el vídeo y el audio de una carpeta personalizada también se registran en la galería."
+        AppLanguage.FRENCH -> "Sous-dossier utilisé quand un téléchargement système va dans la galerie. Vide reste Nexify. Les images, vidéos et sons d'un dossier personnalisé sont aussi inscrits dans la galerie."
+        AppLanguage.GERMAN -> "Unterordner, wenn ein Systemdownload in der Galerie landet. Leer bleibt Nexify. Bilder, Videos und Audio in einem eigenen Ordner werden ebenfalls in der Galerie eingetragen."
+        AppLanguage.RUSSIAN -> "Подпапка, когда системная загрузка попадает в галерею. Пустое значение — Nexify. Картинки, видео и аудио из своей папки тоже регистрируются в галерее."
+        AppLanguage.JAPANESE -> "システムのダウンロードをギャラリーに入れるときのサブフォルダです。空欄は Nexify です。カスタムフォルダの画像、動画、音声もギャラリーに登録します。"
+        AppLanguage.KOREAN -> "시스템 다운로드를 갤러리에 넣을 때 쓰는 하위 폴더입니다. 비우면 Nexify 입니다. 사용자 폴더의 사진, 동영상, 오디오도 갤러리에 등록합니다."
     }
     val pwaStrategyNetworkFirst: String get() = when (Strings.lang) {
         AppLanguage.CHINESE -> "网络优先（推荐）— 优先使用最新内容，离线时用缓存"

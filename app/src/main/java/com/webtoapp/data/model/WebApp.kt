@@ -605,7 +605,7 @@ data class WebViewConfig(
     val consumeVolumeKeys: Boolean = false,
     /**
      * Gallery subdirectory for system-download media (`Pictures/<name>`, and the
-     * matching movie/music folders). One path segment. Blank becomes WebToApp.
+     * matching movie/music folders). One path segment. Blank becomes Nexify.
      */
     val mediaAlbumName: String = "",
     val floatingWindowConfig: FloatingWindowConfig = FloatingWindowConfig(),

@@ -4625,7 +4625,7 @@ fun WebViewScreen(
                                 contextLines = listOf("url=${webApp?.url ?: directUrl ?: testUrl ?: "-"}")
                             )
                             val cm = context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager
-                            cm?.setPrimaryClip(android.content.ClipData.newPlainText("WebToApp Error", report))
+                            cm?.setPrimaryClip(android.content.ClipData.newPlainText("Nexify Error", report))
                             android.widget.Toast.makeText(context, Strings.errorCopied, android.widget.Toast.LENGTH_SHORT).show()
                         }) {
                             Text(Strings.errorCopyDetails)

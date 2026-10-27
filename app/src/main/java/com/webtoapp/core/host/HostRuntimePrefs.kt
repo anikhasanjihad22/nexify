@@ -41,7 +41,10 @@ data class McpSettings(
  * travel with it so an external agent can be pointed at 127.0.0.1.
  *
  * [KEY_ADVANCED_FEATURES] reveals Node.js, PHP, Python, Go, WordPress, and
- * image/video. Off by default. The runtimes stay in the app either way.
+ * image/video. On by default; the About switch lets users hide them again.
+ *
+ * [KEY_SECURE_SCREEN] sets FLAG_SECURE on the host's own screens so Nexify
+ * itself can't be captured or recorded. Off by default.
  */
 @SuppressLint("StaticFieldLeak")
 class HostRuntimePrefs private constructor(private val context: Context) {
@@ -74,7 +77,15 @@ class HostRuntimePrefs private constructor(private val context: Context) {
     )
 
     val advancedFeaturesFlow: StateFlow<Boolean> = context.hostRuntimeDataStore.data.map { prefs ->
-        prefs[KEY_ADVANCED_FEATURES] ?: false
+        prefs[KEY_ADVANCED_FEATURES] ?: true
+    }.stateIn(
+        scope = scope,
+        started = SharingStarted.Eagerly,
+        initialValue = true
+    )
+
+    val secureScreenFlow: StateFlow<Boolean> = context.hostRuntimeDataStore.data.map { prefs ->
+        prefs[KEY_SECURE_SCREEN] ?: false
     }.stateIn(
         scope = scope,
         started = SharingStarted.Eagerly,
@@ -129,7 +140,7 @@ class HostRuntimePrefs private constructor(private val context: Context) {
         } else {
             try {
                 runBlocking {
-                    val value = context.hostRuntimeDataStore.data.first()[KEY_ADVANCED_FEATURES] ?: false
+                    val value = context.hostRuntimeDataStore.data.first()[KEY_ADVANCED_FEATURES] ?: true
                     cachedAdvancedFeatures = value
                     value
                 }
@@ -144,6 +155,12 @@ class HostRuntimePrefs private constructor(private val context: Context) {
             prefs[KEY_ADVANCED_FEATURES] = enabled
         }
         cachedAdvancedFeatures = enabled
+    }
+
+    suspend fun setSecureScreenEnabled(enabled: Boolean) {
+        context.hostRuntimeDataStore.edit { prefs ->
+            prefs[KEY_SECURE_SCREEN] = enabled
+        }
     }
 
     fun currentMcpBlocking(): McpSettings {
@@ -205,6 +222,7 @@ class HostRuntimePrefs private constructor(private val context: Context) {
 
         private val KEY_SEPARATE_TASKS = booleanPreferencesKey("webapp_separate_tasks")
         private val KEY_ADVANCED_FEATURES = booleanPreferencesKey("advanced_features")
+        private val KEY_SECURE_SCREEN = booleanPreferencesKey("host_secure_screen")
         private val KEY_MCP_ENABLED = booleanPreferencesKey("host_mcp_enabled")
         private val KEY_MCP_TOKEN = stringPreferencesKey("host_mcp_token")
         private val KEY_MCP_PORT = intPreferencesKey("host_mcp_port")

@@ -5,7 +5,7 @@
   "description": "Lets pages share text and files through the Android share sheet.",
   "browser_specific_settings": {
     "gecko": {
-      "id": "wta-share@webtoapp"
+      "id": "wta-share@nexify"
     }
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",

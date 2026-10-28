@@ -32,11 +32,11 @@ if (isFdroidBuild) {
 }
 
 android {
-    namespace = "com.webtoapp"
+    namespace = "com.ahr.nexify"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.webtoapp"
+        applicationId = "com.ahr.nexify"
         minSdk = 23
 
         targetSdk = 35
@@ -267,8 +267,8 @@ val syncShellRuntimeSources by tasks.registering(Sync::class) {
         "**/core/kernel/**",
         "**/core/share/**",
 
-        "com/webtoapp/data/model/**",
-        "com/webtoapp/data/converter/**",
+        "com/ahr/nexify/data/model/**",
+        "com/ahr/nexify/data/converter/**",
 
         "**/ui/components/announcement/AnnouncementTemplates.kt",
         "**/ui/components/PremiumComponents.kt",
@@ -284,7 +284,7 @@ val syncShellRuntimeSources by tasks.registering(Sync::class) {
 
     exclude(
 
-        "**/WebToAppApplication.kt",
+        "**/NexifyApplication.kt",
 
         "**/core/crypto/EncryptedApkBuilder.kt",
         "**/core/crypto/SecurityInitializer.kt",
@@ -424,7 +424,7 @@ val generateShellStrings by tasks.registering(GenerateShellStringsTask::class) {
     dependsOn(syncShellRuntimeSources)
 
     script.set(rootProject.layout.projectDirectory.file("scripts/generate_shell_strings.py"))
-    i18nDir.set(rootProject.layout.projectDirectory.dir("app/src/main/java/com/webtoapp/core/i18n"))
+    i18nDir.set(rootProject.layout.projectDirectory.dir("app/src/main/java/com/ahr/nexify/core/i18n"))
     syncedSrcDir.set(layout.buildDirectory.dir("generated/shellRuntimeSrc"))
     overridesDir.set(layout.projectDirectory.dir("src/main/java-overrides"))
     outDir.set(layout.buildDirectory.dir("generated/shellStrings"))

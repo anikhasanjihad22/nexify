@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.webtoapp.clone"
+    namespace = "com.ahr.nexify.clone"
     compileSdk = 36
 
     defaultConfig {

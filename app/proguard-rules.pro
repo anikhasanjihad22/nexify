@@ -1,4 +1,4 @@
-# WebToApp ProGuard Rules
+# Nexify ProGuard Rules
 #
 # 策略：启用代码收缩（移除未使用代码）+ 资源压缩（移除未使用资源），
 # 禁用混淆与激进优化。这是经过线上事故反复验证后的"稳定优先"配置，
@@ -123,18 +123,18 @@
 # ============================================================
 # 项目自身代码 — 全部保留（开源 + 重反射）
 # ============================================================
--keep class com.webtoapp.** { *; }
--keepclassmembers class com.webtoapp.** { *; }
--keep enum com.webtoapp.** { *; }
--keep interface com.webtoapp.** { *; }
+-keep class com.ahr.nexify.** { *; }
+-keepclassmembers class com.ahr.nexify.** { *; }
+-keep enum com.ahr.nexify.** { *; }
+-keep interface com.ahr.nexify.** { *; }
 
 # data class 的合成构造器（含默认参数）— Gson 反序列化必须
--keepclassmembers class com.webtoapp.data.model.** {
+-keepclassmembers class com.ahr.nexify.data.model.** {
     <init>(...);
 }
 
 # ============================================================
-# Room — KSP 生成的 _Impl 类已经在 com.webtoapp.** 范围内
+# Room — KSP 生成的 _Impl 类已经在 com.ahr.nexify.** 范围内
 # ============================================================
 -keep class * extends androidx.room.RoomDatabase { *; }
 -keep @androidx.room.Entity class *
@@ -288,8 +288,8 @@
 -dontwarn dev.chrisbanes.haze.**
 
 # Node.js JNI output bridge (R8 may rename onOutput otherwise)
--keep class com.webtoapp.core.nodejs.NodeBridge { *; }
--keep class com.webtoapp.core.nodejs.NodeJniOutputBridge {
+-keep class com.ahr.nexify.core.nodejs.NodeBridge { *; }
+-keep class com.ahr.nexify.core.nodejs.NodeJniOutputBridge {
     <init>(...);
     public void onOutput(java.lang.String, boolean);
 }

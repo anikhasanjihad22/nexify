@@ -267,7 +267,7 @@ static const char PERF_JS_DOCUMENT_END[] =
 "})();";
 
 static const char PERF_CSS[] =
-"<style id='webtoapp-perf-css'>"
+"<style id='nexify-perf-css'>"
 
 ".perf-low *{animation-duration:0s!important;transition-duration:0s!important;}"
 ".perf-low img{image-rendering:auto!important;}"
@@ -275,7 +275,7 @@ static const char PERF_CSS[] =
 "html{scroll-behavior:auto!important;-webkit-overflow-scrolling:touch;}"
 "</style>";
 
-#define JNI_FUNC(name) Java_com_webtoapp_core_perf_NativePerfEngine_##name
+#define JNI_FUNC(name) Java_com_ahr_nexify_core_perf_NativePerfEngine_##name
 
 JNIEXPORT jboolean JNICALL
 JNI_FUNC(nativeInit)(JNIEnv *env, jobject thiz) {

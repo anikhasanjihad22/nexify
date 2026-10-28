@@ -68,7 +68,7 @@ android {
             }
         }
     }
-    namespace = "com.webtoapp"
+    namespace = "com.ahr.nexify"
     compileSdk = 36
 
     defaultConfig {
@@ -745,9 +745,9 @@ tasks.register("checkConfigFieldDrift") {
     group = "verification"
     description = "Detect field-name drift between ApkConfig payload keys and ShellConfig @SerializedName (static guard for preview/export config consistency)"
     val script = rootProject.file("scripts/check_config_field_drift.py")
-    val payloadFile = file("src/main/java/com/webtoapp/core/apkbuilder/ApkConfigJsonFactory.kt")
-    val apkConfigFile = file("src/main/java/com/webtoapp/core/apkbuilder/ApkConfig.kt")
-    val shellConfigFile = file("src/main/java/com/webtoapp/core/shell/ShellModeManager.kt")
+    val payloadFile = file("src/main/java/com/ahr/nexify/core/apkbuilder/ApkConfigJsonFactory.kt")
+    val apkConfigFile = file("src/main/java/com/ahr/nexify/core/apkbuilder/ApkConfig.kt")
+    val shellConfigFile = file("src/main/java/com/ahr/nexify/core/shell/ShellModeManager.kt")
     val allowlist = rootProject.file("scripts/config_field_drift_allowlist.json")
     // Configuration-cache safe: capture values at configuration time; the doLast action
     // must not reach through Project or the build-script object. Python resolution is

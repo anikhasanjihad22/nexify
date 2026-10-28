@@ -194,10 +194,10 @@
         </intent>
         
         <intent>
-            <action android:name="com.webtoapp.action.PORT_QUERY" />
+            <action android:name="com.ahr.nexify.action.PORT_QUERY" />
         </intent>
         <intent>
-            <action android:name="com.webtoapp.action.PORT_RELEASE" />
+            <action android:name="com.ahr.nexify.action.PORT_RELEASE" />
         </intent>
 
         <!-- Baseline app-list visibility: every package with a launcher entry.
@@ -228,7 +228,7 @@
     ==========================================================================
     -->
     <application
-        android:name=".WebToAppApplication"
+        android:name=".NexifyApplication"
         android:allowBackup="false"
         android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
@@ -236,7 +236,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WebToApp"
+        android:theme="@style/Theme.Nexify"
         android:usesCleartextTraffic="true"
         android:enableOnBackInvokedCallback="true"
         android:pageSizeCompat="enabled"
@@ -244,7 +244,7 @@
 
         
         <meta-data
-            android:name="com.webtoapp.WTA_APP_MARKER"
+            android:name="com.ahr.nexify.WTA_APP_MARKER"
             android:value="true" />
 
         
@@ -259,7 +259,7 @@
             android:launchMode="singleTask"
             android:configChanges="orientation|screenSize|keyboardHidden|screenLayout|smallestScreenSize"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.WebToApp">
+            android:theme="@style/Theme.Nexify">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -271,11 +271,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="com.webtoapp"
+                    android:scheme="com.ahr.nexify"
                     android:host="oauth2callback" />
             </intent-filter>
 
-            <!-- Browser intent: handle http/https URLs so Android offers WebToApp as a browser -->
+            <!-- Browser intent: handle http/https URLs so Android offers Nexify as a browser -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -301,7 +301,7 @@
             android:hardwareAccelerated="true"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.WebToApp.Shell" />
+            android:theme="@style/Theme.Nexify.Shell" />
 
         <!-- Separate recents task. Home preview uses it when that switch is on. The preview tool always does. -->
         <activity
@@ -313,7 +313,7 @@
             android:documentLaunchMode="intoExisting"
             android:maxRecents="15"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.WebToApp.Shell" />
+            android:theme="@style/Theme.Nexify.Shell" />
 
         
         
@@ -324,13 +324,13 @@
             android:hardwareAccelerated="true"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.WebToApp.Shell" />
+            android:theme="@style/Theme.Nexify.Shell" />
 
         <activity
             android:name=".ui.shell.DownloadSaveActivity"
             android:exported="false"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.WebToApp.Transparent" />
+            android:theme="@style/Theme.Nexify.Transparent" />
         
         
         
@@ -339,7 +339,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden|screenLayout|smallestScreenSize"
             android:exported="false"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.WebToApp.Fullscreen" />
+            android:theme="@style/Theme.Nexify.Fullscreen" />
         
         
         <activity
@@ -347,7 +347,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden|screenLayout|smallestScreenSize"
             android:exported="false"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.WebToApp.Fullscreen" />
+            android:theme="@style/Theme.Nexify.Fullscreen" />
         
         
         <activity
@@ -356,7 +356,7 @@
             android:exported="false"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.WebToApp" />
+            android:theme="@style/Theme.Nexify" />
 
         
         
@@ -368,7 +368,7 @@
             android:noHistory="true"
             android:excludeFromRecents="true"
             android:taskAffinity=""
-            android:theme="@style/Theme.WebToApp.Transparent" />
+            android:theme="@style/Theme.Nexify.Transparent" />
 
         
         <provider
@@ -423,7 +423,7 @@
               要重启 V8 时主进程让子进程自杀，Android Framework 自动重建——零感知。
             
             android:process=":nodejs"  → 同 APK 内的独立 OS 进程（前导冒号表示
-                                          private process，跟 webtoapp 共享 UID
+                                          private process，跟 nexify 共享 UID
                                           但有独立的 zygote-fork 出来的进程）
             isolatedProcess=false      → 我们要访问 filesDir / nativeLibraryDir，
                                           isolatedProcess 模式下连这些都拿不到
@@ -460,21 +460,21 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.webtoapp.ACTION_SCHEDULED_START" />
+                <action android:name="com.ahr.nexify.ACTION_SCHEDULED_START" />
             </intent-filter>
         </receiver>
 
         <!--
             Port query / release receivers
             宿主使用：跨 webapp 端口协调（Node/PHP/Python/Go 多运行时共存时）。
-            exported=true 是因为多个由 WebToApp 打包出的 APK 之间需要互相广播查询端口。
+            exported=true 是因为多个由 Nexify 打包出的 APK 之间需要互相广播查询端口。
         -->
         <receiver
             android:name=".core.port.PortQueryReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.webtoapp.action.PORT_QUERY" />
+                <action android:name="com.ahr.nexify.action.PORT_QUERY" />
             </intent-filter>
         </receiver>
 
@@ -483,7 +483,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.webtoapp.action.PORT_RELEASE" />
+                <action android:name="com.ahr.nexify.action.PORT_RELEASE" />
             </intent-filter>
         </receiver>
 
@@ -497,7 +497,7 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.webtoapp.bridge.SCHEDULED_NOTIFICATION" />
+                <action android:name="com.ahr.nexify.bridge.SCHEDULED_NOTIFICATION" />
             </intent-filter>
         </receiver>
 
